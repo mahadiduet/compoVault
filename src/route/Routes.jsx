@@ -5,6 +5,7 @@ import SignUp from "../page/SignUp/SignUp";
 import SignIn from "../page/SignIn/SignIn";
 import Products from "../page/product/Products";
 import ProductDetails from "../page/product/ProductDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -25,11 +26,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/products',
-                element: <Products />
+                element: <PrivateRoute><Products /></PrivateRoute>
             },
             {
                 path: '/products/:id',
-                element: <ProductDetails />,
+                element: <PrivateRoute><ProductDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/api/products/${params.id}`)
             }
         ]
