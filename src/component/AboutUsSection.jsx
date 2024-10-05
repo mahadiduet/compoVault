@@ -4,8 +4,10 @@ const AboutUsSection = () => {
     return (
         <div className="bg-blue-400 py-12">
             <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-4xl font-bold text-center text-blue-900 mb-8">About Us</h2>
-
+                <div>
+                    <h2 className="text-4xl font-bold text-center text-blue-900 mb-8">About Us</h2>
+                    <p className="text-gray-500 text-center mb-8 w-1/2 mx-auto">We are committed to providing exceptional products and services that enrich lives.</p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Owner Image */}
                     <div className="text-center">

@@ -2,8 +2,10 @@ const Contact = () => {
     return (
         <div className="bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500 py-12">
             <div className="max-w-6xl mx-auto bg-gradient-to-r from-black via-green-500 to-blue-900 shadow-2xl rounded-lg p-10">
-                <h2 className="text-4xl font-bold text-center text-white mb-10">Contact Us</h2>
-
+                <div>
+                    <h2 className="text-4xl font-bold text-center text-white mb-10">Contact Us</h2>
+                    <p className="text-gray-500 text-center mb-8 w-1/2 mx-auto">Get in touch with us for any queries or support, we are here to help you.</p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Contact Info Column */}
                     <div className="bg-opacity-80 p-8 rounded-lg shadow-lg" style={{ backgroundColor: '#4caf50' }}>

@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signupimage from "./../../../public/images/signin.jpeg";
 import { useContext } from "react";
 import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
-import { FaGithub, FaGoogle, FaSignInAlt } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 const SignIn = () => {
-    const { loginUser, googleLogin } = useContext(AuthContext);
+    const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const existLocation = location?.state || '/';
     const handleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -13,6 +16,7 @@ const SignIn = () => {
         loginUser(email, password)
             .then(result => {
                 console.log(result.user);
+                navigate(existLocation);
             })
 
     }
@@ -21,7 +25,21 @@ const SignIn = () => {
         googleLogin()
             .then((result) => {
                 const user = result.user;
-                console.log('Google User:',user);
+                navigate(existLocation);
+                console.log('Google User:', user);
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+    }
+
+    const handleGithubLogin = () => {
+        githubLogin()
+            .then((result) => {
+                const user = result.user;
+                navigate(existLocation);
+                console.log('GitHub User:', user);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -96,7 +114,7 @@ const SignIn = () => {
                             <p className="text-center space-x-5 text-2xl text-gray-700 flex">
                                 <p className="text-xl">Sign In with:</p>
                                 <button onClick={handleGoogleLogin}><FcGoogle /></button>
-                                <button><FaGithub /></button>
+                                <button onClick={handleGithubLogin}><FaGithub /></button>
                             </p>
                         </div>
                     </div>
