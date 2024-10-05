@@ -8,8 +8,10 @@ const ImageSection = () => {
     return (
         <div className="py-12 bg-blue-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-red-900 mb-8">Our Products</h2>
-
+                <div>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-center text-red-900 mb-4">Our Products</h2>
+                    <p className="text-gray-500 text-center mb-8 w-1/2 mx-auto">Explore our wide range of top-quality products designed to meet all your needs.</p>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                     {/* Product Image 1 */}
                     <div className="relative group">
