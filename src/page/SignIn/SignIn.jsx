@@ -21,7 +21,7 @@ const SignIn = () => {
         googleLogin()
             .then((result) => {
                 const user = result.user;
-                console.log('Google Login User:',user);
+                console.log('Google User:',user);
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
