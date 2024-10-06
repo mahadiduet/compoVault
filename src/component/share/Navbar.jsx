@@ -53,46 +53,35 @@ const Navbar = () => {
             <div className="navbar-end space-x-4 ">
                 {!user ?
                     <>
-                        <button className="btn bg-green-200 text-red-900 font-bold"><Link to="/signin">Sign In</Link></button>
-                        <button className="btn bg-green-200 text-red-900 font-bold"><Link to="/signup">Sign Up</Link></button>
+                        <button className="btn bg-red-900 text-white font-bold border-0"><Link to="/signin">Sign In</Link></button>
+                        <button className="btn bg-red-900 text-white font-bold border-0"><Link to="/signup">Sign Up</Link></button>
                     </>
                     :
                     <>
-                        <div>
-                            <div className="relative inline-block text-left">
-                                <div onClick={toggleDropdown} className="cursor-pointer">
-                                    {
-                                        profileImage ?
-                                            <><img
-                                                src={profileImage}
-                                                alt="Profile"
-                                                className="w-12 h-12 rounded-full border-2 border-gray-300"
-                                            /></>
-                                            :
-                                            <><img
-                                                src={profile}
-                                                alt="Profile"
-                                                className="w-12 h-12 rounded-full border-2 border-gray-300"
-                                            /></>
-                                    }
-                                </div>
-
-                                {/* Dropdown Menu */}
-                                {isDropdownOpen && (
-                                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
-                                        <div className="py-1">
-                                            <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                {user?.displayName}
-                                            </Link>
-                                            <Link onClick={logout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                Logout
-                                            </Link>
-                                        </div>
-                                    </div>
-                                )}
+                        <div className="flex gap-4 items-center">
+                            <div>{user?.displayName}</div>
+                            <div>
+                                {
+                                    profileImage ?
+                                        <><img
+                                            src={profileImage}
+                                            alt="Profile"
+                                            className="w-12 h-12 rounded-full border-2 border-gray-300"
+                                        /></>
+                                        :
+                                        <><img
+                                            src={profile}
+                                            alt="Profile"
+                                            className="w-12 h-12 rounded-full border-2 border-gray-300"
+                                        /></>
+                                }
+                            </div>
+                            <div>
+                                <button onClick={logout} className="btn bg-red-900 text-white font-bold border-0">Logout</button>
                             </div>
                         </div>
-                    </>}
+                    </>
+                }
 
             </div>
         </div>

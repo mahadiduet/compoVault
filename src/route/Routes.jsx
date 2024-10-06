@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
             {
                 path: '/products/:id',
                 element: <PrivateRoute><ProductDetails /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://compu-vault-server.vercel.app/api/products/${params.id}`)
             }
         ]
     },

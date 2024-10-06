@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signupimage from "./../../../public/images/sign-up.avif";
 import { useContext } from "react";
 import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
 
 const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const existLocation = location?.state || '/';
     const handleSignUp = e => {
         e.preventDefault();
         const fromData = e.target;
@@ -18,7 +21,8 @@ const SignUp = () => {
             .then(result => {
                 updateUser(name, photoUrl)
                     .then((updateUser) => {
-                        console.log('Update User:',updateUser)
+                        console.log('Update User:', updateUser)
+                        navigate(existLocation);
                     }).catch((error) => {
                         console.log(error);
                     });
@@ -70,20 +74,6 @@ const SignUp = () => {
                                 />
                             </div>
 
-                            {/* <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
-                                    Phone Number
-                                </label>
-                                <input
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    placeholder="Enter your phone number"
-                                    required
-                                />
-                            </div> */}
-
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="phone">
                                     Image URL
@@ -124,7 +114,7 @@ const SignUp = () => {
                         <div className="my-6">
                             <div className="border-b border-dotted border-gray-300 mb-2"></div>
                             <p className="text-center text-gray-700">
-                                Already registered? <Link to="/signin" className="text-blue-600 font-semibold hover:underline">Sign Up</Link>
+                                Already registered? <Link to="/signin" className="text-blue-600 font-semibold hover:underline">Sign In</Link>
                             </p>
                         </div>
                     </div>
