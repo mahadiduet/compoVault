@@ -1,13 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+console.log("API Key:", import.meta.env.VITE_APIKEY);
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBW3ZGFIPFujQeZ7GIcXqYhBUgMX6ytSnI",
-  authDomain: "compovault.firebaseapp.com",
-  projectId: "compovault",
-  storageBucket: "compovault.appspot.com",
-  messagingSenderId: "226767148396",
-  appId: "1:226767148396:web:6d38b2e8fc418b6f8f0f49"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 const app = initializeApp(firebaseConfig);
